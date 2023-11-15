@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Nunuo
+  m_Controller: {fileID: 9100000, guid: fe3990bc515e07d49891afaa9d89945a, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 5654e755adfd8914f93aec8a233c5cf3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2617de2e3eafba8488737fc13f4f64e3, type: 2}

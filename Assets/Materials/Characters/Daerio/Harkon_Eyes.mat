@@ -1,0 +1,270 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Harkon_Eyes
+  m_Shader: {fileID: 4800000, guid: 585360abf95306644842c75325aa16b4, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _ALPHATEST_ON
+  - _HASEM_FALSE
+  m_InvalidKeywords:
+  - _ADD_PRECOMPUTED_VELOCITY
+  - _DISABLE_SSR_TRANSPARENT
+  - _EM_FALSE
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2475
+  stringTagMap:
+    MotionVector: User
+    RenderType: TransparentCutout
+  disabledShaderPasses:
+  - DistortionVectors
+  - TransparentBackface
+  m_LockedProperties: _MetallicColor
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Anisotropy:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BC:
+        m_Texture: {fileID: 2800000, guid: 3d232130648bdaa4c81c7a3e88e5f488, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseColor:
+        m_Texture: {fileID: 2800000, guid: 3d232130648bdaa4c81c7a3e88e5f488, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DissolveNoise:
+        m_Texture: {fileID: 2800000, guid: 1402758e2a0168e42963097b9df5517a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EM:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FNoise:
+        m_Texture: {fileID: 2800000, guid: 0fd74301f0dca0049a4643eed6ac0607, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Hair:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HairSHET:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MRAO:
+        m_Texture: {fileID: 2800000, guid: fa890410e5b66634580539ab94da8be2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normals:
+        m_Texture: {fileID: 2800000, guid: ff3936138686bba408ae76c11201a51d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SHET:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Valerica_SSS:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Vallya_BC:
+        m_Texture: {fileID: 2800000, guid: b7b8549cb4d498847a02744533106fb5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Vallya_MRAO:
+        m_Texture: {fileID: 2800000, guid: 071a42af5de15b8409800ac858b98ce0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Vallya_Normals:
+        m_Texture: {fileID: 2800000, guid: 1b139158e842d5e4681838f368b78eaf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _aniso_shift:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _1: 0
+    - _ACThreshold: 0.5
+    - _AO: 1
+    - _AOInt: 1
+    - _AOIntensity: 0.5
+    - _AddPrecomputedVelocity: 1
+    - _AlphaCutoff: 0.5
+    - _AlphaCutoffEnable: 1
+    - _AlphaDstBlend: 0
+    - _AlphaSrcBlend: 1
+    - _AlphaToMask: 0
+    - _AlphaToMaskInspectorValue: 0
+    - _BlendMode: 0
+    - _CullMode: 2
+    - _CullModeForward: 2
+    - _DeathHeight: 0.3
+    - _Dissolve: 0
+    - _DissolveEdge: -0.1
+    - _DissolveNoiseScale: 3
+    - _DissolvePower: 4
+    - _DistortionEnable: 0
+    - _DistortionOnly: 0
+    - _DoubleSidedEnable: 0
+    - _DoubleSidedGIMode: 0
+    - _DoubleSidedNormalMode: 2
+    - _DstBlend: 0
+    - _EM: 0
+    - _EMInt: 0
+    - _EnableBlendModePreserveSpecularLighting: 1
+    - _EnableFogOnTransparent: 1
+    - _EnvironmentReflections: 1
+    - _FScale: 0
+    - _FaceSSS: 0
+    - _Float0: 0.8
+    - _Float1: 1.36
+    - _Float2: 0.1
+    - _Float3: 0
+    - _Float4: 0
+    - _Float5: 0
+    - _Float6: 0
+    - _GeneralInt: 1
+    - _HLHardness: 0
+    - _HL_A: 0
+    - _HasEM: 0
+    - _HasHair: 0
+    - _HasHair1: 0
+    - _HitEffect: 0
+    - _Int: 1
+    - _Int2: 1
+    - _IsDead: 0
+    - _Jitter: 0
+    - _Keyword0: 0
+    - _LightInfluence: 0
+    - _LightingStrength: 1
+    - _MainColorInt: 0.5
+    - _MetalFresnel: 13
+    - _MetallicColor: 0.5
+    - _Metalness: -0.38
+    - _NScale: 1
+    - _NormalsInt: 1
+    - _OpaqueCullMode: 2
+    - _Power: 1
+    - _Power2: 1
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _ReceivesSSR: 1
+    - _ReceivesSSRTransparent: 0
+    - _RenderQueueType: 1
+    - _RequireSplitLighting: 0
+    - _RimInt: 0
+    - _Roughness: 1.34
+    - _SSS: 0
+    - _SSSInt: 0.5
+    - _ShadowAmount: 0.26
+    - _ShadowSharpness: 0.03
+    - _SpecularHardness: 0.02
+    - _SpecularHighlights: 1
+    - _SpecularInt: 0.902
+    - _SpecularLevels: 1
+    - _SrcBlend: 1
+    - _StencilRef: 0
+    - _StencilRefDepth: 8
+    - _StencilRefDistortionVec: 4
+    - _StencilRefGBuffer: 10
+    - _StencilRefMV: 40
+    - _StencilWriteMask: 6
+    - _StencilWriteMaskDepth: 9
+    - _StencilWriteMaskDistortionVec: 4
+    - _StencilWriteMaskGBuffer: 15
+    - _StencilWriteMaskMV: 41
+    - _SupportDecals: 1
+    - _SurfaceType: 0
+    - _TessEdgeLength: 16
+    - _TessMax: 25
+    - _TessMaxDisp: 25
+    - _TessMin: 10
+    - _TessPhongStrength: 0.5
+    - _TessValue: 16
+    - _TransAmbient: 0.1
+    - _TransDirect: 0.9
+    - _TransNormal: 0.5
+    - _TransScattering: 2
+    - _TransShadow: 0.5
+    - _TransStrength: 1
+    - _TransmissionShadow: 0.5
+    - _TransparentBackfaceEnable: 0
+    - _TransparentCullMode: 2
+    - _TransparentSortPriority: 0
+    - _TransparentWritingMotionVec: 0
+    - _TransparentZWrite: 0
+    - _UV1fortex: 0
+    - _UseShadowThreshold: 0
+    - _WNInt: 1
+    - _ZTestDepthEqualForOpaque: 3
+    - _ZTestGBuffer: 3
+    - _ZTestTransparent: 4
+    - _ZWrite: 1
+    m_Colors:
+    - _Color0: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 0}
+    - _Color1: {r: 0, g: 0, b: 0, a: 0}
+    - _DeathEdgeColor: {r: 0.56188905, g: 1.4185281, b: 5.17915, a: 1}
+    - _DissolveColor: {r: 1, g: 0.054901965, b: 0, a: 1}
+    - _DissolveEdgeColor: {r: 1, g: 1, b: 1, a: 0}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
+    - _EMColor: {r: 0, g: 0, b: 0, a: 0}
+    - _EMInt: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FNoiseSpeed: {r: 0.3, g: 0, b: 0, a: 0}
+    - _FStatusColor: {r: 0.017812174, g: 3.776172, b: 0.6278078, a: 0}
+    - _Float1_Asset: {r: 0, g: 0, b: 0, a: 0}
+    - _HLColor: {r: 0.0754717, g: 0.0754717, b: 0.0754717, a: 0}
+    - _HairColor: {r: 1, g: 1, b: 1, a: 0}
+    - _HitColor: {r: 1, g: 1, b: 1, a: 0}
+    - _LightColor: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 0}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MetalThreshold: {r: 0, g: 0, b: 0, a: 0}
+    - _MetallicColor: {r: 0, g: 0, b: 0, a: 0}
+    - _RimColor: {r: 0, g: 0, b: 0, a: 0}
+    - _SSSColor: {r: 1, g: 0.5525606, b: 0.5525606, a: 0}
+    - _ShadowColor: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 0}
+    - _SkinShadow: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0}
+    - _SpecularColor: {r: 1, g: 1, b: 1, a: 0}
+    - _SpecularLevels: {r: 0, g: 0, b: 0, a: 0}
+    - _UnlitColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []

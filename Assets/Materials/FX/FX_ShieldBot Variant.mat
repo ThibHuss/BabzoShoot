@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FX_ShieldBot Variant
+  m_Shader: {fileID: 4800000, guid: 89142ebab28a59a44b2c4134ad006c9f, type: 3}
+  m_Parent: {fileID: 2100000, guid: 0c7eb1806ca4c6d48906f7610b55ef04, type: 2}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _DISTORT_ON
+  - _MASKTYPE_WS
+  - _SURFACE_TYPE_TRANSPARENT
+  m_InvalidKeywords:
+  - _ADD_PRECOMPUTED_VELOCITY
+  - _ENABLE_FOG_ON_TRANSPARENT
+  - _USEWPMASK_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
+    RenderType: Transparent
+  disabledShaderPasses:
+  - DistortionVectors
+  - TransparentBackface
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _BlendMode: 0
+    - _Float1: 1
+    - _OPInt: 1
+    - _RenderQueueType: 4
+    - _ZWrite: 0
+    m_Colors:
+    - _Color2: {r: 80.61643, g: 517.8995, b: 497.6783, a: 0}
+  m_BuildTextureStacks: []
