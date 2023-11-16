@@ -15,6 +15,7 @@ public class ProjectileBehaviour : MonoBehaviour
     public Rigidbody rb;
     public UnitBehaviour casterUnit;
     public Unit targetUnit;
+    public string opponentTag;
 
     private void Start()
     {
@@ -34,12 +35,12 @@ public class ProjectileBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy")) // Remplacez "Enemy" par le tag approprié
+        if (other.gameObject.CompareTag(opponentTag)) // Remplacez "Enemy" par le tag approprié
         {
             UnitBehaviour unitBehaviour = other.gameObject.GetComponent<UnitBehaviour>();
             if (unitBehaviour != null)
             {
-                casterUnit.ApplyDamageAndFX();
+                casterUnit.ApplyDamageRanged(other.GetComponent<Unit>());
             }
 
             if (!isPiercing)

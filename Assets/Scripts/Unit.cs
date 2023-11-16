@@ -133,9 +133,17 @@ public class Unit : MonoBehaviour
         Canvas canvas = FindObjectOfType<Canvas>();
         if (canvas != null)
         {
-            Vector2 position = Input.mousePosition;
-            //RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.GetComponent<RectTransform>(), position, canvas.worldCamera, out Vector2 localPoint);
-            unitUIInstance.transform.localPosition = position;
+            Vector2 screenPosition = Input.mousePosition;
+
+            // Convertir la position de l'écran en position locale du canvas
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                canvas.GetComponent<RectTransform>(),
+                screenPosition,
+                canvas.worldCamera,
+                out Vector2 localPosition);
+
+            // Définir la position de l'instance de l'UI
+            unitUIInstance.transform.localPosition = localPosition;
         }
     }
 

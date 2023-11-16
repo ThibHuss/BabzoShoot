@@ -832,7 +832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7847a689c7721eb4dba4344e727ab715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragArea: {fileID: 0}
+  dragArea: {fileID: 4766514276870095261}
   dragObject: {fileID: 361392230166496202}
   topOnDrag: 1
 --- !u!114 &4988365370073075894

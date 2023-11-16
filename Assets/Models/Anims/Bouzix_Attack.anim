@@ -54381,7 +54381,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.57729006
-    functionName: ApplyDamageAndFX
+    functionName: ApplyDamageMonoTarget
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

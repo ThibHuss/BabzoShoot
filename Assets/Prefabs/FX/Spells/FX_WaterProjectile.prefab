@@ -10209,6 +10209,7 @@ MonoBehaviour:
   rb: {fileID: 993115193174691601}
   casterUnit: {fileID: 0}
   targetUnit: {fileID: 0}
+  opponentTag: 
 --- !u!114 &1038260663799177738
 MonoBehaviour:
   m_ObjectHideFlags: 0
