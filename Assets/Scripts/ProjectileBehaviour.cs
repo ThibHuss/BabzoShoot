@@ -12,10 +12,10 @@ public class ProjectileBehaviour : MonoBehaviour
     public bool isPiercing = false;
     public GameObject detach;
     public Transform target; // Cible du projectile
-    public Rigidbody rb;
     public UnitBehaviour casterUnit;
     public Unit targetUnit;
     public string opponentTag;
+    public bool isMoving = false;
 
     private void Start()
     {
@@ -29,13 +29,13 @@ public class ProjectileBehaviour : MonoBehaviour
             transform.forward = Vector3.Lerp(transform.forward, direction, Time.deltaTime * speed);
         }
 
+        if(isMoving)
         transform.position += transform.forward * speed * Time.deltaTime;
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(opponentTag)) // Remplacez "Enemy" par le tag approprié
+        if (other.gameObject.CompareTag(opponentTag))
         {
             UnitBehaviour unitBehaviour = other.gameObject.GetComponent<UnitBehaviour>();
             if (unitBehaviour != null)
@@ -45,9 +45,10 @@ public class ProjectileBehaviour : MonoBehaviour
 
             if (!isPiercing)
             {
-                detach.transform.SetParent(null);
-                Destroy(gameObject);
+                if(detach != null)
+                    detach.transform.SetParent(null);
             }
+            Destroy(gameObject);
         }
     }
 }

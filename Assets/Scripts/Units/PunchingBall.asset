@@ -13,15 +13,22 @@ MonoBehaviour:
   m_Name: PunchingBall
   m_EditorClassIdentifier: 
   unitName: PunchingBall
+  elementType: 0
+  unitStyle: 0
   maxHP: 10000000
-  moveSpeed: 0
   attackPower: 0
   attackRange: 0
   attackSpeed: 0
   critChance: 0
   critMultiplier: 0
+  currentMana: 0
+  maxMana: 1000
+  manaPerHit: 0
+  xp: 0
+  xpToNextLevel: 0
+  level: 0
+  xpGiven: 0
   armor: 1
+  moveSpeed: 0
   weight: 1
   height: 1
-  elementType: 0
-  unitStyle: 0

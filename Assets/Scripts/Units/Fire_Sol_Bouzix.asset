@@ -15,16 +15,20 @@ MonoBehaviour:
   unitName: Bouzix
   elementType: 0
   unitStyle: 0
-  maxHP: 100
-  moveSpeed: 1
+  maxHP: 200
   attackPower: 10
   attackRange: 2
   attackSpeed: 2
   critChance: 20
   critMultiplier: 1.5
+  currentMana: 0
+  maxMana: 100
+  manaPerHit: 10
   xp: 0
   xpToNextLevel: 0
   level: 0
+  xpGiven: 0
   armor: 1
+  moveSpeed: 1
   weight: 10
   height: 1

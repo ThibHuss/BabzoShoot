@@ -36,29 +36,45 @@ public class Unit : MonoBehaviour
 
     [SerializeField] public GameObject playerModel;
     private Transform originalPos;
+    public string unitName;
 
-    [Header("Stats")]
-    [SerializeField] public string unitName;
-    [SerializeField] public int maxHP;
-    [SerializeField] public int currentHP;
-    [SerializeField] public int currentXP;
-    [SerializeField] public int level = 1;
-    [SerializeField] public int xpToNextLevel;
-    [SerializeField] public int experience = 0;
-    [SerializeField] public float moveSpeed;
-    [SerializeField] public int attackPower;
-    [SerializeField] public float attackRange;
-    [SerializeField] public float attackSpeed;
-    [SerializeField] public float critChance;
-    [SerializeField] public float def;
-    [SerializeField] public int weight;
-    [SerializeField] public float height = 1f;
+    [FoldoutGroup("HP")] public int maxHP;
+    [FoldoutGroup("HP")] public int currentHP;
+
+    [FoldoutGroup("XP")] public int xp;
+    [FoldoutGroup("XP")] public int currentXP;
+    [FoldoutGroup("XP")] public int level = 1;
+    [FoldoutGroup("XP")] public int xpToNextLevel;
+    [FoldoutGroup("XP")] public int experience = 0;
+
+    [FoldoutGroup("MANA")] public int currentMana;
+    [FoldoutGroup("MANA")] public int maxMana;
+    [FoldoutGroup("MANA")] public int manaPerhit;
+
+
+    [FoldoutGroup("ATK")] public int attackPower;
+    [FoldoutGroup("ATK")] public float attackRange;
+    [FoldoutGroup("ATK")] public float attackSpeed;
+    [FoldoutGroup("ATK")] public float critChance;
+
+
+    [FoldoutGroup("DEF")] public int armor;
+
+
+    [FoldoutGroup("SPD")] public float moveSpeed;
+
+
+    [FoldoutGroup("OTHER")] public int weight;
+    [FoldoutGroup("OTHER")] public float height = 1f;
+        
 
     [Header("UI")]
-    [SerializeField] public Slider lifeBar;
-    [SerializeField] public Image sliderImage;
-    [SerializeField] public Color alyLifeBarColor;
-    [SerializeField] public Color nmeLifeBarColor;
+    [FoldoutGroup("UI")] public Slider lifeBar;
+    [FoldoutGroup("UI")] public Image lifeBarImage;
+    [FoldoutGroup("UI")] public Color alyLifeBarColor;
+    [FoldoutGroup("UI")] public Color nmeLifeBarColor;
+
+    [FoldoutGroup("UI")] public Slider manaBar;
 
     [SerializeField] public float damageEffectiveMult = 1.5f;
     [SerializeField] public float damageNeutralMult = 1f;
@@ -103,6 +119,8 @@ public class Unit : MonoBehaviour
                 UpdateUnitUI();
         }
     }
+
+    #region UI
     private void InitializeUnitUI()
     {
         if (unitUIInstance == null)
@@ -158,6 +176,7 @@ public class Unit : MonoBehaviour
         unitUIInstance.LevelText.text = level.ToString();
     }
 
+    #endregion
     public void InitializeLocalStats()
     {
         if (unitStats != null)
@@ -165,33 +184,41 @@ public class Unit : MonoBehaviour
             unitName = unitStats.unitName;
             maxHP = unitStats.maxHP;
             currentHP = unitStats.maxHP;
+
             moveSpeed = unitStats.moveSpeed;
+
             attackPower = unitStats.attackPower;
             attackRange = unitStats.attackRange;
             attackSpeed = unitStats.attackSpeed;
             critChance = unitStats.critChance;
-            def = unitStats.armor;
+
+            currentMana = unitStats.currentMana;
+            maxMana = unitStats.maxMana;
+            manaPerhit = unitStats.manaPerHit;
+
+            armor = unitStats.armor;
+
             elementType = unitStats.elementType;
             
             level = unitStats.level;
             xpToNextLevel = unitStats.xpToNextLevel;
-            level = unitStats.level;
 
             weight = unitStats.weight;
             height = unitStats.height;
         }
     }
 
+    
     public void InitializeUI()
     {
         //Définir la couleur de la lifebar
         if (type.ToString() == "Ally")
         {
-            sliderImage.color = alyLifeBarColor;
+            lifeBarImage.color = alyLifeBarColor;
         }
         else
         {
-            sliderImage.color = nmeLifeBarColor;
+            lifeBarImage.color = nmeLifeBarColor;
         }
     }
 
@@ -201,7 +228,13 @@ public class Unit : MonoBehaviour
         experience += exp;
         CheckLevelUp();
     }
+    public void AddMana()
+    {
+        currentMana += manaPerhit;
+    }
+    
 
+    
     public void CheckLevelUp()
     {
         // if (experience >= threshold)
@@ -212,10 +245,10 @@ public class Unit : MonoBehaviour
     }
     public int ReceiveDamage(int damage)
     {
-        int damageAfterArmor = Mathf.Max(0, damage - unitStats.armor);
+        int damageAfterArmor = Mathf.Max(0, damage - armor);
         currentHP -= damageAfterArmor;
 
-        lifeBar.value = (float)currentHP / unitStats.maxHP;
+        lifeBar.value = (float)currentHP / maxHP;
 
         if (currentHP <= 0)
         {

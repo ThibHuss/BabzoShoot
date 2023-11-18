@@ -178,6 +178,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 2655211579613569376, guid: 3c5de18825e4a844e80df27b180a74c6,
         type: 3}
+      propertyPath: spellObject
+      value: 
+      objectReference: {fileID: 6683931350455478462, guid: c79456d4eaf1a1a4697b7ac27dbdfe2b,
+        type: 3}
+    - target: {fileID: 2655211579613569376, guid: 3c5de18825e4a844e80df27b180a74c6,
+        type: 3}
       propertyPath: fxProjectile
       value: 
       objectReference: {fileID: 5781914206088454764, guid: a83b71bbe8ebd83468425c6b9f68f87a,

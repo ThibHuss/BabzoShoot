@@ -7,6 +7,7 @@ using DG.Tweening;
 using UnityEditor;
 using Sirenix.OdinInspector;
 using System.ComponentModel;
+using Unity.VisualScripting;
 
 public class UnitBehaviour : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class UnitBehaviour : MonoBehaviour
     private UnitType targetType;
     private GameObject focusedEnemy; // Variable pour stocker l'ennemi ciblé
     private bool isAttacking = false;
+    private bool isCastingSpell = false;
 
     [FoldoutGroup("Attack Related")] public bool isProjectile;
     [FoldoutGroup("Attack Related"), ShowIf("isProjectile")] public GameObject fxProjectile;
@@ -29,6 +31,10 @@ public class UnitBehaviour : MonoBehaviour
     [FoldoutGroup("Attack Related")] public GameObject attackEffectPrefab;
     [FoldoutGroup("Attack Related")] public GameObject attackTextPrefab;
     [FoldoutGroup("Attack Related")] public HitEffect hitEffect;
+
+    [FoldoutGroup("Attack Related")] public GameObject spellObject;
+
+
     private Vector3 damageTextOffset = new Vector3(0, 1, 0);
     
 
@@ -46,7 +52,6 @@ public class UnitBehaviour : MonoBehaviour
             agent.speed = unit.unitStats.moveSpeed;
             agent.stoppingDistance = unit.unitStats.attackRange;
         }
-
         MaterialInstancier();
     }
 
@@ -63,10 +68,7 @@ public class UnitBehaviour : MonoBehaviour
 
             if (distanceToEnemy > unit.unitStats.attackRange)
             {
-                agent.SetDestination(focusedEnemy.transform.position);
-                animator.SetBool("Moving", true);
-                agent.isStopped = false;
-                isAttacking = false;
+                Move();
             }
             else
             {
@@ -74,35 +76,43 @@ public class UnitBehaviour : MonoBehaviour
                 animator.SetBool("Moving", false);
                 RotateTowards(focusedEnemy.transform);
 
-                if (!isAttacking && unit.attackSpeed != 0)
+                if (unit.attackSpeed != 0 && !isCastingSpell)
+                {
                     StartCoroutine(AttackRoutine());
+                    Debug.Log("Zbeub");
+                }
             }
+
+            Debug.Log(unit.name + " is casting spell is " + isCastingSpell);
+            Debug.Log(unit.name + " is attacking is " + isAttacking);
         }
 
+        CheckMana();
         agent.speed *= this.unit.moveSpeed;
+    }
+
+    private void Move()
+    {
+        agent.SetDestination(focusedEnemy.transform.position);
+        animator.SetBool("Moving", true);
+        agent.isStopped = false;
+        isAttacking = false;
     }
 
     #region Attack
     IEnumerator AttackRoutine()
     {
-        isAttacking = true;
-
-        // Ajustement de la vitesse de l'animation en fonction de la vitesse d'attaque
-        float animationSpeed = unit.unitStats.attackSpeed;
-        animator.speed = animationSpeed;
-
-        animator.SetTrigger("Attack");
-
-        // Calculer la durée réelle de l'animation basée sur la vitesse d'animation
-        float animationDuration = 1f / animationSpeed;
-
-        // Attendez la fin de l'animation d'attaque
-        yield return new WaitForSeconds(animationDuration);
-
-        // Réinitialiser la vitesse de l'animation à sa valeur par défaut si nécessaire
-        animator.speed = 1f;
 
         isAttacking = false;
+        if (!isCastingSpell)
+        {
+            float animationSpeed = unit.unitStats.attackSpeed;
+            animator.speed = animationSpeed;
+            animator.SetTrigger("Attack");
+
+            float animationDuration = 1f / animationSpeed;
+            yield return new WaitForSeconds(animationDuration);
+        }
     }
     public void ApplyDamageMonoTarget()
     {
@@ -145,16 +155,16 @@ public class UnitBehaviour : MonoBehaviour
             enemyUnit.ReceiveDamage(damageWithElementalEffect);
             StartCoroutine(AnimateMaterialParameter(enemyUnit));
 
-
+            unit.AddMana();
             ApplyPunchToTarget(this.gameObject, enemyUnit.playerModel, damageWithElementalEffect, enemyUnit.weight);
         }
     }
     public void ApplyDamageRanged(Unit opponent)
     {
-        Unit attackerUnit = GetComponent<Unit>(); // L'unité qui attaque
-
         if (opponent != null)
         {
+            Unit attackerUnit = GetComponent<Unit>(); // L'unité qui attaque
+
             int initialDamage = attackerUnit.unitStats.attackPower;
             bool isCriticalHit = Random.Range(0f, 100f) <= attackerUnit.unitStats.critChance;
 
@@ -192,7 +202,13 @@ public class UnitBehaviour : MonoBehaviour
 
             ApplyPunchToTarget(this.gameObject, opponent.playerModel, damageWithElementalEffect, opponent.weight);
             }
+
+        if(opponent == null)
+        { return; }
+
         }
+
+
 
     public void FireProjectile()
     {
@@ -219,8 +235,67 @@ public class UnitBehaviour : MonoBehaviour
         ProjectileBehaviour projectileBehaviour = projectileInstance.GetComponentInChildren<ProjectileBehaviour>();
         projectileBehaviour.target = focusedEnemy.transform;
         projectileBehaviour.casterUnit = this;
-
         projectileBehaviour.opponentTag = targetType.ToString();
+        projectileBehaviour.speed = projectileSpeed;
+
+        unit.AddMana();
+    }
+
+    public void CheckMana()
+    {
+
+        unit.manaBar.value = (float)unit.currentMana / unit.maxMana;
+        if (unit.currentMana >= unit.maxMana)
+        {
+            isCastingSpell = true;
+            CastSpell();
+        }
+    }
+    public void CastSpell()
+    {
+        isCastingSpell = true;
+        unit.currentMana = 0;
+        animator.speed = 1f;
+        animator.SetBool("CastSpell", true);
+        StartCoroutine(WaitForSpellAnimation());
+    }
+
+    private IEnumerator WaitForSpellAnimation()
+    {
+        isCastingSpell = true;
+        // Obtenez l'AnimatorStateInfo pour l'état actuel (supposez que c'est la couche 0)
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        Debug.Log(stateInfo);
+
+        // Attendez que l'animation se termine
+        yield return new WaitForSeconds(stateInfo.length);
+        isCastingSpell = false;
+        animator.SetBool("CastSpell", false);
+    }
+
+    public void DoSpell()
+    {
+        GameObject furthestEnemy = FindFurthestEnemy();
+
+        if (furthestEnemy != null)
+        {
+            GameObject spellInstance = Instantiate(spellObject, furthestEnemy.transform.position, Quaternion.identity);
+            ProjectileBehaviour projectileBehaviour = spellInstance.GetComponentInChildren<ProjectileBehaviour>();
+            projectileBehaviour.casterUnit = this;
+            projectileBehaviour.opponentTag = targetType.ToString();
+            projectileBehaviour.target = focusedEnemy.transform;
+        }
+
+        if(furthestEnemy == null)
+        {
+            //Calculate a new furthest ennemy before instantiating spell
+            GameObject newFurthestEnemy = FindFurthestEnemy();
+            GameObject spellInstance = Instantiate(spellObject, newFurthestEnemy.transform.position, Quaternion.identity);
+            ProjectileBehaviour projectileBehaviour = spellInstance.GetComponentInChildren<ProjectileBehaviour>();
+            projectileBehaviour.casterUnit = this;
+            projectileBehaviour.opponentTag = targetType.ToString();
+            projectileBehaviour.target = focusedEnemy.transform;
+        }
     }
     public void ApplyPunchToTarget(GameObject attacker, GameObject opponent, float damage, float weight)
     {
@@ -401,6 +476,27 @@ public class UnitBehaviour : MonoBehaviour
 
         return closest;
     }
+
+    GameObject FindFurthestEnemy()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(targetType.ToString());
+        GameObject furthest = null;
+        float maxDistance = 0; // Initialiser à 0 pour la distance maximale
+        Vector3 currentPosition = transform.position;
+
+        foreach (GameObject enemy in enemies)
+        {
+            float distance = Vector3.Distance(enemy.transform.position, currentPosition);
+            if (distance > maxDistance)
+            {
+                furthest = enemy;
+                maxDistance = distance;
+            }
+        }
+
+        return furthest; // Renvoie l'ennemi le plus éloigné
+    }
+
 
     private void MaterialInstancier()
     {

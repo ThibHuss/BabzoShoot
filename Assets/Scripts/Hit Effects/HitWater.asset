@@ -48,4 +48,4 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   duration:
-  - 1
+  - 0.2

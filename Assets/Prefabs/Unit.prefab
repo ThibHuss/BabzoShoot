@@ -55,27 +55,31 @@ MonoBehaviour:
   unitStats: {fileID: 0}
   unitUIPrefab: {fileID: 1367145628674896126, guid: 2f47f61ace6100344b9afeb5e6c6a460,
     type: 3}
-  ui: {fileID: 0}
   playerModel: {fileID: 0}
   unitName: 
   maxHP: 0
   currentHP: 0
+  xp: 0
   currentXP: 0
   level: 1
   xpToNextLevel: 0
   experience: 0
-  moveSpeed: 0
+  currentMana: 0
+  maxMana: 0
+  manaPerhit: 0
   attackPower: 0
   attackRange: 0
   attackSpeed: 0
   critChance: 0
-  def: 0
+  armor: 0
+  moveSpeed: 0
   weight: 0
   height: 1
   lifeBar: {fileID: 2073023568605313131}
-  sliderImage: {fileID: 1003918321532643193}
+  lifeBarImage: {fileID: 1003918321532643193}
   alyLifeBarColor: {r: 0.01668743, g: 0.7075472, b: 0.2469504, a: 1}
   nmeLifeBarColor: {r: 1, g: 0.24056602, b: 0.24056602, a: 1}
+  manaBar: {fileID: 5666491513463056650}
   damageEffectiveMult: 1.5
   damageNeutralMult: 1
   damageBadMult: 0.75
@@ -293,6 +297,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnitCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1384597522750458432, guid: 068c3f1a2af8eff408c36d8d45221434,
+        type: 3}
+      propertyPath: m_Name
+      value: LifeBarFill
+      objectReference: {fileID: 0}
     - target: {fileID: 2481441541984296909, guid: 068c3f1a2af8eff408c36d8d45221434,
         type: 3}
       propertyPath: m_Pivot.x
@@ -413,6 +422,11 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8638769921406333008, guid: 068c3f1a2af8eff408c36d8d45221434,
+        type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -448,3 +462,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7721360585014347835}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5666491513463056650 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2703466583350616369, guid: 068c3f1a2af8eff408c36d8d45221434,
+    type: 3}
+  m_PrefabInstance: {fileID: 7721360585014347835}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
